@@ -1,29 +1,29 @@
-/* 
+/*
 
-Задание
-Требования:
+Задание 1
 
-Создайте переменную temperature, в которой будет храниться значение температуры.
-Используя условный оператор, напишите программу, которая выводит сообщение в зависимости от температуры:
-Если температура меньше 0, выведите сообщение "Холодно!".
-Если температура от 0 до 20 (включительно), выведите сообщение "Прохладно".
-Если температура от 21 до 30 (включительно), выведите сообщение "Тепло".
-Если температура больше 30, выведите сообщение "Жарко!".
-Выведите результат в консоль. 
+Дан объект
+
+const house = {
+  adress: "Pfondorfer str 69",
+  postIndex: 10408,
+  roofColor: "red",
+  wallColor: "green",
+};
+
+Используя деструктуризацию объекта, получите в отдельные переменные цвет стен, и адрес.
 
 */
 
-let temperature = 25;
-if(temperature < 0){
-console.log("Холодно!");
-return;
-}else if(temperature > 0 && temperature < 21){
-console.log("Прохладно.");
-return;
-}else if(temperature > 20 && temperature < 31){
-    console.log("Тепло.")
-}else{
-console.log("Жарко!");
-return;
-}
+const house = {
+    adress: "Pfondorfer str 69",
+    postIndex: 10408,
+    roofColor: "red",
+    wallColor: "green",
+  };
+
+  const {adress, postIndex, roofColor, wallColor} = house;
+
+console.log(adress);
+console.log(wallColor);
 
