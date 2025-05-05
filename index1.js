@@ -1,29 +1,20 @@
 /*
 
 Задание 1
+Создайте метод, который принимает объект, а возврщает новый объект,
+в котором ключи и значения поменялись местами.
 
-Дан объект
+{name: "Bob"} --> {"Bob": "name"}
 
-const house = {
-  adress: "Pfondorfer str 69",
-  postIndex: 10408,
-  roofColor: "red",
-  wallColor: "green",
-};
-
-Используя деструктуризацию объекта, получите в отдельные переменные цвет стен, и адрес.
+(вам понабится поработать с Object.values, Object.keys )
 
 */
 
-const house = {
-    adress: "Pfondorfer str 69",
-    postIndex: 10408,
-    roofColor: "red",
-    wallColor: "green",
-  };
+function swapKeysAndValues(obj) {
+    return Object.fromEntries(Object.entries(obj).map(([key, value]) => [value, key]));
+}
 
-  const {adress, postIndex, roofColor, wallColor} = house;
-
-console.log(adress);
-console.log(wallColor);
-
+const original = { name: "Bob" };
+const swapped = swapKeysAndValues(original);
+console.log(original); // { name: "Bob" }
+console.log(swapped); // { "Bob": "name" }

@@ -1,25 +1,30 @@
 /*
 
-Задание 3
-
-Создайте функцию gardender, которая принимает в себя два параметра: операцию и предмет, на который эта операция будет направлена.
-Создайте еще одну функцию поливать цветок, которая бы выводила в консоль "I water this " плюс название конкретного цветка.
-Вызовите фунцкию gardender c параметрами: функция поливать цветок, 'rose'.
-Попробуйте придумать функции для других операций и предметов, с которыми может работать садовник.
+Задание 3 дополнительное!
+Попробуйте соxранить метод grow во внешнем от объекта контеkсте и вызвать его с другими растениями при помощи bind или apply.
 
 */
 
-function gardender(work, object){
-    work(object);
+function grow() {
+    this.height += 30; // Увеличиваем высоту на 30 см
+    this.year++; // Увеличиваем год
 }
 
-function waterFlower(flower){
-    console.log(`I water this ${flower}`);
-}
+const oak = {
+    height: 140,
+    year: 2025
+};
 
-function trimBush(bush){
-    console.log(`I trim this ${bush}`);
-}
+const pine = {
+    height: 100,
+    year: 2025
+};
 
-gardender(waterFlower,`rose`);
-gardender(trimBush,`tree`);
+// Используем bind для привязки метода к объекту дуба
+const oakGrow = grow.bind(oak);
+oakGrow();
+console.log(`Дуб -> Год: ${oak.year}, Высота: ${oak.height} см`);
+
+// Используем apply для вызова метода для сосны
+grow.apply(pine);
+console.log(`Сосна -> Год: ${pine.year}, Высота: ${pine.height} см`);
