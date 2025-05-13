@@ -1,30 +1,19 @@
-// найдем первую кнопку по id
+document
+  .getElementById("animalForm")
+  .addEventListener("submit", function (event) {
+    event.preventDefault();
 
-const btn = document.getElementById("magic-btn");
-console.log(btn);
-// скопируем ее - получилась вторая кнопка. Ее можно использовать.
-const clonedBtn = btn.cloneNode(true);
-console.log(clonedBtn);
-// задали id
-clonedBtn.id = "magic-btn-2";
+    const nickname = document.getElementById("nickname").value;
+    const age = document.getElementById("age").value;
+    const breed = document.getElementById("breed").value;
 
+    if (nickname && age && breed) {
+      const animalList = document.getElementById("animalList");
+      const listItem = document.createElement("li");
+      listItem.textContent = `Кличка: ${nickname}, Возраст: ${age}, Порода: ${breed}`;
+      animalList.appendChild(listItem);
 
-btn.addEventListener('click', () => {
-   console.log("Function is working");
-  // при нажатии на первую кнопку
-  // работайте с clonedBtn
-  // ваш код начинается здесь
-  document.body.appendChild(clonedBtn);
-  clonedBtn.textContent = "Я изменю тебя";
-  
-});
- 
-// здесь можете создать EventListener для второй кнопки
-
-clonedBtn.addEventListener('click', () => {
-    const btn = document.getElementById("magic-btn");
-    btn.style.backgroundColor = '#9c4a1a';
-    btn.style.color = "black"
-});
-  
-
+      // Очистка формы после добавления
+      document.getElementById("animalForm").reset();
+    }
+  });
